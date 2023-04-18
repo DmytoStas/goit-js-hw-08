@@ -37,6 +37,19 @@ function handleSubmit(evt) {
 
   const submitedData = { ...JSON.parse(localStorage.getItem(USER_DATA_KEY)) };
 
+  if (Object.keys(submitedData).length === 0) {
+    return alert('Поля вводу не можуть бути пустими!');
+  }
+
+  const isAllInputFilled =
+    submitedData.hasOwnProperty('email') &&
+    submitedData.hasOwnProperty('message');
+
+  // console.log();
+  if (!isAllInputFilled) {
+    return alert('Всі поля мають бути заповнені!');
+  }
+
   console.log(submitedData);
 
   evt.currentTarget.reset();
